@@ -5,6 +5,7 @@
 
 ;; Author: Eeli Reilin <eeli@fea.st>
 ;; Keywords: draft, drafting
+;; URL: https://github.com/gaudecker/draft-mode
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -30,15 +31,12 @@
 
 ;;; Code:
 
-(defconst draft-mode-version "0.1.0")
-
 (defvar draft-mode-map (make-sparse-keymap)
   "Keymap for draft-mode.")
 
 (defgroup draft nil
   "Rough drafting for Emacs."
   :prefix "draft-"
-  :version "24.3.1"
   :link '(emacs-commentary-link "draft-mode")
   :link '(url-link "https://github.com/gaudecker/draft-mode"))
 
@@ -49,17 +47,35 @@
              (end-of-buffer))
             ((eq this-command 'self-insert-command)
              (end-of-buffer)))))
-(add-hook 'pre-command-hook 'draft-pre-command-hook)
 
-(define-key draft-mode-map (kbd "C-d") 'end-of-buffer)
-(define-key draft-mode-map (kbd "M-d") 'end-of-buffer)
-(define-key draft-mode-map (kbd "C-w") 'end-of-buffer)
-(define-key draft-mode-map (kbd "C-k") 'end-of-buffer)
-(define-key draft-mode-map (kbd "M-<backspace>") 'end-of-buffer)
-(define-key draft-mode-map (kbd "<backspace>") 'end-of-buffer)
+(add-hook 'draft-mode-hook
+          (lambda ()
+            (add-hook 'pre-command-hook 'draft-pre-command-hook nil 'local)))
+
+(define-key draft-mode-map [remap delete-char] 'end-of-buffer)
+(define-key draft-mode-map [remap org-delete-char] 'end-of-buffer)
+(define-key draft-mode-map [remap kill-word] 'end-of-buffer)
+(define-key draft-mode-map [remap kill-region] 'end-of-buffer)
+(define-key draft-mode-map [remap kill-line] 'end-of-buffer)
+(define-key draft-mode-map [remap kill-paragraph] 'end-of-buffer)
+(define-key draft-mode-map [remap org-kill-line] 'end-of-buffer)
+(define-key draft-mode-map [remap delete-backward-char] 'end-of-buffer)
+(define-key draft-mode-map [remap backward-delete-char] 'end-of-buffer)
+(define-key draft-mode-map [remap backward-delete-char-untabify] 'end-of-buffer)
+(define-key draft-mode-map [remap org-delete-backward-char] 'end-of-buffer)
+(define-key draft-mode-map [remap backward-kill-word] 'end-of-buffer)
 
 ;;;###autoload
-(define-minor-mode draft-mode "draft mode" nil " Draft" draft-mode-map)
+(define-minor-mode draft-mode 
+  "Toggle Draft mode.
+Interactively with no argument, this command toggles the mode.
+A positive prefix argument enables the mode, any other prefix
+argument disables it.  From Lisp, argument omitted or nil enables
+the mode, `toggle' toggles the state.
+
+When Draft mode is enabled, all input is inserted at the end of 
+the buffer and disables most editing commands."
+  nil " Draft" draft-mode-map)
 
 (provide 'draft-mode)
 ;;; draft-mode.el ends here
