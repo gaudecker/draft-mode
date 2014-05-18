@@ -14,9 +14,10 @@ Add draft-mode.el to your load-path:
 
     (add-to-list 'load-path "~/.emacs.d/vendor/draft-mode")
 
-The it can be required as usual
+Alternatively you can install it from
+[Melpa](http://melpa.milkbox.net/#/draft-mode) with
 
-    (require 'draft-mode)
+    M-x package-install draft-mode
 
 ## Usage
 
