@@ -1,5 +1,5 @@
 ;;; draft-mode.el --- Rough drafting for Emacs.
-;; Version: 0.1.0
+;; Version: 0.1.1
 
 ;; Copyright (C) 2014 Eeli Reilin
 
