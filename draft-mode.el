@@ -42,11 +42,10 @@
 
 (defun draft-pre-command-hook ()
   "Move point to the end of the buffer before self-insert."
-  (if draft-mode
-      (cond ((eq this-command 'org-self-insert-command)
-             (end-of-buffer))
-            ((eq this-command 'self-insert-command)
-             (end-of-buffer)))))
+  (if (and draft-mode
+           (or (eq this-command 'org-self-insert-command)
+               (eq this-command 'self-insert-command)))
+      (goto-char (point-max))))
 
 (add-hook 'draft-mode-hook
           (lambda ()
