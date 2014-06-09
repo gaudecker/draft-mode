@@ -3,7 +3,7 @@
 
 ;; Copyright (C) 2014 Eeli Reilin
 
-;; Author: Eeli Reilin <eeli@fea.st>
+;; Author: Eeli Reilin <gaudecker@fea.st>
 ;; Keywords: draft, drafting
 ;; URL: https://github.com/gaudecker/draft-mode
 
