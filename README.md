@@ -1,4 +1,4 @@
-# Description
+# Description [![MELPA](http://melpa.org/packages/draft-mode-badge.svg)](http://melpa.org/#/draft-mode)
 
 Draft-mode enables your thoughts to flow into your drafts by disabling
 the ability to edit what you've already written and inserting any new
