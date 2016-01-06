@@ -6,7 +6,8 @@ text always at the end of the buffer.
 
 Using draft-mode usually results in pretty rough drafts with a ton of
 typing errors, but makes it harder to forget things that could be lost
-when focusing on editing and restructuring text.
+when focusing on editing and restructuring text. `draft-mode` is a minor
+mode and can be used with any major mode. 
 
 ## Installation
 
